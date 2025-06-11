@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdAccount"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="600" Width="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"  ></RowDefinition>
@@ -39,12 +39,17 @@
                     <ListBoxItem>UK</ListBoxItem>
                     <ListBoxItem>UK</ListBoxItem>
                     <ListBoxItem>UK</ListBoxItem>
-            </ListBox>
+                </ListBox>
+            </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <TextBlock Margin="10">Calculated sam account name</TextBlock>
+            <TextBlock Margin="4"></TextBlock>
         </StackPanel>
-        
-        
-        
-        
+
+
+
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
