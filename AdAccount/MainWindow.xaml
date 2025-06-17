@@ -1,62 +1,108 @@
-﻿<Window x:Class="AdAccount.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AdAccount"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="600">
+﻿<Window
+    x:Class="AdAccount.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AdAccount"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    Title="MainWindow"
+    Width="600"
+    Height="600"
+    mc:Ignorable="d">
+
+    <Window.Resources>
+        <ObjectDataProvider x:Key="myDataSource">
+            <ObjectDataProvider.ConstructorParameters>
+                <system:String>Joe</system:String>
+            </ObjectDataProvider.ConstructorParameters>
+        </ObjectDataProvider>
+    </Window.Resources>
+
+
+
+
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"  ></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <!--This is the heading app spaning coloumns-->
-        <Rectangle Grid.Row="0" Fill="AliceBlue" Grid.ColumnSpan="3" Margin="0,0,10,0"></Rectangle>
-        <TextBlock TextAlignment="Center" Grid.ColumnSpan="3" Background="Cyan"  FontSize="30" FontFamily="Calibri Light">APP to create AD account with email </TextBlock>
-        
-            <!--coloumn 1 capture user info-->
-            <StackPanel Grid.Column="0" Grid.Row="1">
-                <TextBlock Margin="4">First Name :</TextBlock>
-                 <RichTextBox Margin="4"></RichTextBox>
-                <TextBlock Margin="4">Last Name :</TextBlock>
-                <RichTextBox Margin="4"></RichTextBox>
-                <TextBlock Margin="4"> Job Title :</TextBlock>
-                <RichTextBox Margin="4" ></RichTextBox>
-                <TextBlock Margin="4"> Manager :</TextBlock>
-                <RichTextBox Margin="4"></RichTextBox>
-                <TextBlock Margin="4"> Clone :</TextBlock>
-                <RichTextBox Margin="4" ></RichTextBox>
-                <TextBlock Margin="4"> Office :</TextBlock>
-                <ListBox Margin="4">
-                    <ListBoxItem>UK</ListBoxItem>
-                    <ListBoxItem>UK</ListBoxItem>
-                    <ListBoxItem>UK</ListBoxItem>
-                    <ListBoxItem>UK</ListBoxItem>
-                    <ListBoxItem>UK</ListBoxItem>
-                    <ListBoxItem>UK</ListBoxItem>
-                    <ListBoxItem>UK</ListBoxItem>
-                    <ListBoxItem>UK</ListBoxItem>
-                    <ListBoxItem>UK</ListBoxItem>
-                </ListBox>
-            </StackPanel>
+        <!--  This is the heading app spaning coloumns  -->
+        <Rectangle
+            Grid.Row="0"
+            Grid.ColumnSpan="3"
+            Margin="0,0,10,0"
+            Fill="AliceBlue" />
+        <TextBlock
+            Grid.ColumnSpan="3"
+            Background="Cyan"
+            FontFamily="Calibri Light"
+            FontSize="30"
+            TextAlignment="Center">
+            APP to create AD account with email
+        </TextBlock>
 
-        <StackPanel Grid.Column="1" Grid.Row="1">
+        <!--  coloumn 1 capture user info  -->
+        <StackPanel Grid.Row="1" Grid.Column="0">
+            <Label Margin="4">First Name :</Label>
+
+            <TextBox
+                Name="fname"
+                Margin="4"
+                Text=""
+                TextChanged="name_TextChanged" />
+
+
+
+
+
+
+
+            <Label Margin="4">Last Name :</Label>
+            <TextBox
+                Name="lname"
+                Margin="4"
+                Text=""
+                TextChanged="name_TextChanged" />
+            <TextBlock Margin="4">Job Title :</TextBlock>
+            <RichTextBox Margin="4" />
+            <TextBlock Margin="4">Manager :</TextBlock>
+            <RichTextBox Margin="4" />
+            <TextBlock Margin="4">Clone :</TextBlock>
+            <RichTextBox Margin="4" />
+            <TextBlock Margin="4">Office :</TextBlock>
+            <ListBox x:Name="Office" Margin="4" SelectionChanged="Office_SelectionChanged">
+                <ListBoxItem  >Hungerford</ListBoxItem>
+                <ListBoxItem>Nottingham</ListBoxItem>
+                <ListBoxItem>Tankersley</ListBoxItem>
+                <ListBoxItem>Bromsgrove</ListBoxItem>
+                <ListBoxItem>Plymouth</ListBoxItem>
+                <ListBoxItem>Dartford</ListBoxItem>
+                <ListBoxItem>Milton Keynes</ListBoxItem>
+            </ListBox>
+            <Button Margin="4" Click="Button_CreateAD" Cursor="Hand" >Create Domain Account</Button>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBlock Margin="10">Calculated sam account name</TextBlock>
-            <TextBlock Margin="4"></TextBlock>
+            <Label
+                Name="samcalc"
+                Margin="4"
+                Content="{Binding fname}" />
+            <TextBlock Text="{Binding Source={StaticResource myDataSource}, Path=Fname}" />
         </StackPanel>
 
 
 
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        
-        
+
+
     </Grid>
 
 </Window>
